@@ -1,6 +1,8 @@
 from abc import abstractmethod, ABC
 import time
 
+print("")
+
 class Electrodomestico(ABC):
 
 	def __init__(self, precio, potencia, __voltaje):
