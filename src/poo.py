@@ -1,11 +1,28 @@
 from abc import abstractmethod, ABC
-import time
+from dataclasses import dataclass
 
-print("")
+@dataclass
+class Persona():
+	edad: int
+	nombre: str
+	altura: float
+	nacionalidad: str = 'mexicano'
+
+	def __ne__(self):
+		pass
+
+esteban = Persona(30, 'esteban', 1.72)
+paola = Persona(20, 'paola', 1.62)
+paola2 = Persona(20, 'paola', 1.62)
+print(esteban)
+print(paola)
+print(paola2)
+print(paola == paola2)
+
 
 class Electrodomestico(ABC):
 
-	def __init__(self, precio, potencia, __voltaje):
+	def __init__(self, precio: float, potencia: int, __voltaje):
 		self.precio = precio
 		self.potencia = potencia
 		self.__voltaje = __voltaje
@@ -19,7 +36,7 @@ class Electrodomestico(ABC):
 	def set_voltaje(self, voltaje):
 		self.__voltaje = voltaje
 
-	def get_voltaje(self):
+	def get_voltaje(self) -> int:
 		return self.__voltaje
 
 	@abstractmethod
@@ -66,7 +83,6 @@ class Estufa_Induccion(Electrodomestico):
 		print('Divide el voltaje entre cada una de las parrillas de la estufa')
 		print('Con ese voltaje lo utiliza para calentar el metal conductor del utensilio de cocina')
 		return super().utilizar_voltaje()
-
 
 if __name__ == "__main__":
 	print('Metodo principal')
